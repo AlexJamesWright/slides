@@ -295,23 +295,23 @@
 									Re-heating results in unbound ejecta
 								</li>
 								<li>
-									Experience lulls of cut-offs of mass fall back on to central object
+									Experience lulls or cut-offs of mass fall back on to central object
 								</li>
 								<li>
-									Leads to extended X-ray emission
+									May lead to extended X-ray emission
 								</li>
 							</ul>
 						</div>
 						<aside class="notes">
 							The reheating of the ejecta by radioactive decay has implications on the fall back
 							of matter to the central object, affecting whether or not orbits are bound or unbound. If
-							unbound, the mass accretion rate can experience temporal lulls to absolute cut-offs, leading
-							to gaps/lulls in the X-ray emission luminosity.
+							unbound, the mass accretion rate can experience temporal lulls to absolute cut-offs, potentially
+							leading to gaps/lulls in the X-ray emission luminosity.
 							Constant mass fall back rates would expect a simple power law with no gaps in luminosity.
 						</aside>
 					</section>
 
-					<section > <!--data-background="elementsOrigin.jpg" data-background-position="right" data-background-size="53%"> -->
+					<section >
 						<div style="float: left; width: 50%">
 							<h2>...and the simulations?</h2><br /><br />
 							<ul>
@@ -329,6 +329,22 @@
 						<aside class="notes">
 
 						</aside>
+					</section>
+
+					<section data-background="HeatingWithYe.jpg" data-background-position="right" data-background-size="46%">
+						<div style="float: left; width:50%">
+							<br /><br />
+							<h4>The dance of $\dot{Q}_{r}$ and $Y_e$</h4>
+							<br /><br />
+							<ul>
+								<li>
+									Can see that heating due to change in $Y_e$
+								</li>
+								<li>
+									Heating occurs over some timescale
+								</li>
+							</ul>
+						</div>
 					</section>
 
 				</section>  <!-- Motivation -->
@@ -357,7 +373,7 @@
 									$$
 									\begin{align}
 										\nabla_{\alpha} (\rho u^{\alpha}) &= 0 \\
-										\nabla_{\alpha} T^{\alpha \beta} &= \dot{Q}_r u^{\beta} \\
+										\nabla_{\alpha} T^{\alpha \beta} &= \dot{E}_{\nu} u^{\beta} \\
 										\nabla_{\alpha} (\rho Y_e u^{\alpha}) &= S_r
 									\end{align}
 									$$
@@ -369,7 +385,7 @@
 						</div>
 						<div>
 								<h4 class="fragment">
-								 Q: What to choose for $\dot{Q}_r$ and $S_r$?</h4>
+								 Q: What to choose for $\dot{E}_{\nu}$ and $S_r$?</h4>
 						</div>
 						<aside class="notes">
 							To start, we take the standard evolution equations of hydro+the electron fraction
@@ -412,29 +428,69 @@
 
 					<section>
 						<div>
-						<h2>Stress-energy source: $\dot{Q}_r$</h2>
+						<h2>Stress-energy source: $\dot{E}_{\nu}$</h2>
 						<div style="float: left; width: 50%">
 							<br /><br />
 							<ul>
 								<li>
-									Represents the rate of energy added through heating
+									Represents the rate of energy loss through neutrinos
 								</li>
 								<li>
-									Heating due to change in specific binding energy, $\epsilon_B$
+									Total energy release due to change in specific binding energy, $\epsilon_B$
 								</li>
 								<li>
-									Energy left after neutrinos
+									Energy loss rate, so occurs over some timescale
 								</li>
 							</ul>
 						</div>
 						<div style="float: left; width: 50%"> <br /><br /><br />
-						<span class=fragment>$\dot{Q}_r=$</span><span class=fragment>$\ f_{\nu}$</span><span class=fragment> $\ \rho_0 \frac{\partial \epsilon_B}{\partial Y_e}$ </span><span class="fragment"> $\frac{Y_e^f - Y_e}{\tau_r }$</span>
+						<span class=fragment>$\dot{E}_{\nu}=$</span><span class=fragment>$\ f_{\nu}$</span><span class=fragment> $\ \rho_0 \frac{\partial \epsilon_B}{\partial Y_e}$ </span><span class="fragment"> $\frac{Y_e^f - Y_e}{\tau_r }$</span>
 						<div>
-							<br clear="all" /><br />
+							<br clear="all" /><br /> <!-- nothing -->
 						</div>
-						<span class=fragment>Free parameters are $Y_e^f$, $\tau_r$ and $\tau_r$</span>
+						<span class=fragment>
+							Free parameters are $Y_e^f$, $f_{\nu}$ and $\tau_r$. <br /><br />
+							How to determine binding energy, $\epsilon_B$?
+						</span>
 						</div>
 					</div>
+					</section>
+
+					<section>
+						<div style="float: left; width: 50%">
+							<br />
+							<h2>Binding energy, $\epsilon_B$</h2>
+							<br /><br />
+							<ul>
+								<li>
+									Equal to internal energy density as $(\rho, T) \to 0$
+								</li>
+								<li>
+									Typically, tabulated EOSs untrusted beyond some bounds
+								</li>
+							</ul>
+						</div>
+						<div style="float:right; width:50%">
+							<br /><br /><br /><br />
+							<ul>
+								<li>
+									Need to extend EOS to low densities and temperatures
+								</li>
+								<li>
+									Polytrope EOS:  $\ \ p=\kappa \rho^{4/3}$
+								</li>
+								<li>
+									Binding energy is interpolated from trusted region of tabulated EOS
+								</li>
+							</ul>
+						</div>
+						<aside class="notes">
+							The specific binding energy is equal to the specific internal energy as the density and temperature
+							approach zero. However, the tabulated EOS we use (LS220) is not well trusted for such low parameters,
+							so we must extend our EOS such that it is useful in this regime. For this, we use the polytropic EOS,
+							matched to the tabulated EOS along lines of constant entropy. With this, we can determine the
+							thermodynamic properties by interpolating from regions in which LS220 is valid.
+						</aside>
 					</section>
 
 					<section data-background="depsdye.jpg" data-background-position="right" data-background-size="46%">
@@ -444,22 +500,99 @@
 							<br /><br />
 							<ul>
 								<li>
-									Typically, tabulated EOSs untrusted beyond some bounds
+									How do we pick free parameters, $Y_e^f$, $f_{\nu}$ and $\tau_r$?
 								</li>
 								<li>
-									How do we pick free parameters, $Y_e^f$, $f_{\nu}$ and $\tau_r$?
+									Need $\ \ \frac{\partial \epsilon_B}{\partial Y_e}$
+								</li>
+								<li>
+									Minimum gives $Y_e^f$
 								</li>
 							</ul>
 						</div>
 					</div>
-					</section>
+				</section>
+
+				<section data-background="ModelHeatingRate.jpg" data-background-position="right" data-background-size="46%">
+					<div style="float: left; width:50%">
+						<h3>R-process timescale, $\tau_r$</h3>
+						<br /><br />
+						<ul>
+							<li>
+								Comparison with SkyNet reaction network
+							</li>
+							<li>
+								Heating rate $\approx$ unchanged for $\tau_r >0.65$
+							</li>
+							<li>
+								Model favours lower $f_{\nu}$
+							</li>
+							<li>
+								Constrain $\tau_r$ by other means
+							</li>
+						</ul>
+					</div>
 
 				</section>
 
+				<section data-background="YeEvolution.jpg" data-background-position="right" data-background-size="46%">
+					<div style="float: left; width:50%">
+						<br /><br />
+						<h3>R-process timescale, $\tau_r$</h3>
+						<br /><br />
+						<ul>
+							<li>
+								Constrain through evolution of $Y_e$
+							</li>
+							<li>
+								Model favours lower $\tau_r$
+							</li>
+						</ul>
+					</div>
+				</section>
 
-			</div>
+			</section> <!-- Model -->
 
-		</div>
+			<section id="future work">
+				<section>
+					<br />
+					<h2>Summary</h2>
+					<br /><br /><br />
+					<div style="float:center">
+						<ul>
+							<li>
+								Simple model can match SkyNet
+								<ul>
+									<li>
+										Parameters have been tuned
+									</li>
+									<li>
+										Agreement with expected values
+									</li>
+								</ul>
+							</li>
+							<br />
+							<li>
+								Implementation into SpEC pending
+								<ul>
+									<li>
+										Long term evolution of BHNS ejecta
+									</li>
+									<li>
+										Include re-heating due to r-process elements' decay
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+
+				</section>
+			</section>
+
+
+		</div> <!-- Slides -->
+
+	</div> <!-- Reveal -->
 
 		<script src="../reveal.js/lib/js/head.min.js"></script>
 		<script src="../reveal.js/js/reveal.js"></script>
@@ -474,7 +607,7 @@
 				progress: true,
         hash: true,
 				history: true,
-				fragmentInURL: false,
+				fragmentInURL: true,
 				center: false,
 				width:  1366,
 				height: 768,
