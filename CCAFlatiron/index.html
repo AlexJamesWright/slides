@@ -137,7 +137,7 @@
 						</div>
 						<aside class="notes">
 							This work was conducted at the Center for Computational Astrophysics summer school at
-							the Flatiron institute, New York 2019.
+							the Flatiron institute, New York, 2019.
 						</aside>
 					</section>
 
@@ -174,7 +174,7 @@
 							</div>
 								<aside class="notes">
 									*Small* caveat before we start, I am not an expert on the microphysics of BHNSs.
-									In Southampton, I am interested in reducing the computational costs of stiff EOMs for NSNS mergers.
+									In Southampton, I am interested in reducing the computational costs of stiff equations of motion for NSNS mergers.
 									We assume ideal gamma law EOS, no nuclear reactions, and evolve simulations to milliseconds after merger---
 									only (really) interested in the central object and it's immediate surroundings.
 									Happy to discuss this further.
@@ -280,7 +280,7 @@
 							isotopes begin to decay radioactively via fission, alpha and beta decay, forming the heavy
 							stable elements. The energy released during these decays is either removed via neutrinos, or
 							reinjected into the ejecta to heat it. The reheated ejecta then re-radiates thermally,
-							proucing a radioavtive glow on the order of a day/s similar to supernova glows but 10^3
+							proucing a radioactive glow on the order of a day/s similar to supernova glows but 10^3
 							more luminous at its peak. Hence, kilonova.
 						</aside>
 					</section>
@@ -305,7 +305,11 @@
 								<font size="4">     [credit: A. Betranhandy]</font>
 							</p>
 						</div>
-
+						<aside class="notes">
+							Thank you to Aurore Betranhandy for these animations. They show how the seed nuclei in more neutron rich ejecta
+							(lower Ye) capture a larger number of neutrons, eventually leading to unstable isotopes that will ultimately
+							decay and release energy.
+						</aside>
 					</section>
 
 					<section data-background="XrayLuminosity.jpg" data-background-position="right" data-background-size="46%">
@@ -332,7 +336,7 @@
 							The reheating of the ejecta by radioactive decay has implications on the fall back
 							of matter to the central object, affecting whether or not orbits are bound or unbound. If
 							unbound, the mass accretion rate can experience temporal lulls to absolute cut-offs, potentially
-							leading to gaps/lulls in the X-ray emission luminosity.
+							leading to gaps/lulls in the X-ray emission luminosity [Desai+18].
 							Constant mass fall back rates would expect a simple power law with no gaps in luminosity.
 						</aside>
 					</section>
@@ -353,7 +357,9 @@
 							</ul>
 						</div>
 						<aside class="notes">
-
+							Whilst we do have full nucear reaction networks, they are too expensive to simply employ in GRHD simulations.
+							The aim of this project is to develop a simplified model of the heating rate that is a result of the decay of unstable
+							r-process nuclei.
 						</aside>
 					</section>
 
@@ -367,12 +373,18 @@
 									Can see that heating due to change in $Y_e$
 								</li>
 								<li>
-									Heating occurs over some timescale
+									Heating occurs over some timescale, $\tau_r$
 								</li>
 							</ul>
 						</div>
 					</section>
-
+					<aside class="notes">
+						Throughout this talk I will use the electron fraction as a proxy for how the system is heating.
+						The change in electron fraction corresponds to a change in  the composition of the nuclei, and thus
+						will change the binding energy. This change in binding energy is responsible for the heating of the
+						ejecta. We can see this by looking at the output of SkyNet. As Ye changes, there is an approximately
+						constant heating rate which switches off as the electron fraction approaches the final value Yef.
+					</aside>
 				</section>  <!-- Motivation -->
 
 				<section id='model'>
@@ -527,12 +539,12 @@
 							<ul>
 								<li>
 									How do we pick free parameters, $Y_e^f$, $f_{\nu}$ and $\tau_r$?
-								</li>
+								</li><br />
 								<li>
-									Need $\ \ \frac{\partial \epsilon_B}{\partial Y_e}$
-								</li>
+									Need $\ \ \partial \epsilon_B / \partial Y_e$
+								</li><br />
 								<li>
-									Minimum gives $Y_e^f$
+									Minimum indicates $Y_e^f$
 								</li>
 							</ul>
 						</div>
@@ -546,15 +558,12 @@
 						<ul>
 							<li>
 								Comparison with SkyNet reaction network
-							</li>
+							</li><br />
 							<li>
 								Heating rate matches well for $\tau_r \lesssim 0.65$
-							</li>
+							</li><br />
 							<li>
-								Model favours lower $f_{\nu}$
-							</li>
-							<li>
-								Further constrain $\tau_r$ by other means
+								Heating rate is the important parameter to nail
 							</li>
 						</ul>
 					</div>
@@ -564,23 +573,20 @@
 				<section data-background="YeEvolution.jpg" data-background-position="right" data-background-size="46%">
 					<div style="float: left; width:50%">
 						<br />
-						<h3>R-process timescale, $\tau_r$</h3>
+						<h3>Final electron fraction, $Y_e$, and $f_{\nu}$</h3>
 						<br />
 						<ul>
 							<li>
 								Constrain through evolution of $Y_e$
 							</li>
 							<li>
-								$\tau_r \approx 0.65$ gives good behaviour
-							</li>
-							<li>
 								$Y_e^f \approx 0.38$
 							</li>
 						</ul><br />
-						So parameters for model are:
+						Total heating sets $f_\nu \approx 0.4$, so parameters are:
 						$$
 						\begin{align}
-							(Y_e^f, \tau_r, f_v) = (0.38, 0.65, 0.3)
+							(Y_e^f, \tau_r, f_v) = (0.38, 0.5, 0.4)
 						\end{align}
 						$$
 					</div>
@@ -603,6 +609,9 @@
 									</li>
 									<li>
 										Agreement with expected values
+									</li>
+									<li>
+										Correct total heating to within $\lesssim 10\%$
 									</li>
 								</ul>
 							</li>
